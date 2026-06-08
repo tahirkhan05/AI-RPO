@@ -1,0 +1,33 @@
+=== 3D Parameterised PINN Training ===
+Trajectories: 300  |  Collocation pts: 300  |  Epochs: 5000+25000
+
+Device: cuda
+Generating training trajectories...
+  Generated trajectory 50/300
+  Generated trajectory 100/300
+  Generated trajectory 150/300
+  Generated trajectory 200/300
+  Generated trajectory 250/300
+  Generated trajectory 300/300
+Dataset ready: 300 trajectories
+
+Phase A: data loss only
+  Epoch  1000/5000 | L_data=0.304993
+  Epoch  2000/5000 | L_data=0.326140
+  Epoch  3000/5000 | L_data=0.328746
+  Epoch  4000/5000 | L_data=0.173406
+  Epoch  5000/5000 | L_data=0.271607
+
+Phase B: data + physics (warm lambda schedule)
+  Epoch  2500/25000 | L_data=0.240174 | L_phys=0.0690 | lam=0.0033
+  Epoch  5000/25000 | L_data=0.253243 | L_phys=0.0594 | lam=0.0067
+  Epoch  7500/25000 | L_data=0.209132 | L_phys=0.0544 | lam=0.0100
+  Epoch 10000/25000 | L_data=0.289415 | L_phys=0.0544 | lam=0.0100
+  Epoch 12500/25000 | L_data=0.175740 | L_phys=0.0544 | lam=0.0100
+  Epoch 15000/25000 | L_data=0.264815 | L_phys=0.0565 | lam=0.0100
+  Epoch 17500/25000 | L_data=0.182896 | L_phys=0.0575 | lam=0.0100
+  Epoch 20000/25000 | L_data=0.252773 | L_phys=0.0541 | lam=0.0100
+  Epoch 22500/25000 | L_data=0.231749 | L_phys=0.0559 | lam=0.0100
+  Epoch 25000/25000 | L_data=0.258471 | L_phys=0.0564 | lam=0.0100
+
+Model saved -> models/pinn3d_param_v1.pt

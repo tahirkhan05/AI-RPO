@@ -1,0 +1,44 @@
+2026-06-07 21:14:58.201043: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-07 21:15:00.011981: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+=== LSTM Deviation Forecaster Training ===
+Episodes per agent: 150
+Epochs: 50  |  Patience: 7
+
+Device: cuda
+
+Collecting rollout trajectories...
+  Collecting from v4 2D...
+  Collected 50/150 episodes
+  Collected 100/150 episodes
+  Collected 150/150 episodes
+  v4 2D: 150 episodes collected
+  Collecting from v5 2D+EKF...
+  Collected 50/150 episodes
+  Collected 100/150 episodes
+  Collected 150/150 episodes
+  v5 2D+EKF: 150 episodes collected
+  Collecting from v6ext 3D...
+  Collected 50/150 episodes
+  Collected 100/150 episodes
+  Collected 150/150 episodes
+  v6ext 3D: 150 episodes collected
+Total episodes collected: 450
+
+Building dataset...
+Dataset split — train: 200,000  val: 653,545  test: 713,739
+
+Training...
+  Epoch   5/50 | train MAE=0.0m | val MAE=0.0m
+  Epoch  10/50 | train MAE=0.0m | val MAE=0.0m
+
+  Early stop at epoch 12 (no improvement for 7 epochs)
+
+Best val MAE: 22.3m
+Model saved -> models/lstm_forecaster_v1.pt
+Test MAE:      21.2m
+Loss curve saved -> logs/lstm_training_curve.png
+
+[PAPER OPPORTUNITY: LSTM deviation forecasting]
+  Forecast horizon: 10 steps (1 second)
+  Test MAE: 0.0m on held-out episodes
+  Claim: LSTM predicts trajectory deviation 1s ahead with <Xm error

@@ -1,0 +1,20 @@
+2026-06-07 14:24:31.219113: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-07 14:24:35.189976: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Device:     cpu
+Mode:       3D PINN-guided + EKF (v6)
+Obs space:  15D  |  Action: 2D (pitch, yaw)
+Stage 1:    400,000 steps  (no randomization)
+Stage 2:    600,000 steps  (full randomization)
+
+=== Stage 1: 3D curriculum warmup ===
+  step 163,840 (16.4%) | rew -10117.88 | ep_len  11715 | kl 0.0038
+  step 327,680 (32.8%) | rew -12592.90 | ep_len  11710 | kl 0.0048
+Stage 1 saved -> models/ppo_v6_stage1.zip
+
+=== Stage 2: 3D full domain randomization ===
+  step 491,520 (49.2%) | rew -10982.16 | ep_len  10977 | kl 0.0042
+  step 655,360 (65.5%) | rew -12269.77 | ep_len  11220 | kl 0.0026
+  [checkpoint] saved: models\checkpoint_800000.zip
+  step 819,200 (81.9%) | rew -13661.88 | ep_len  11380 | kl 0.0032
+  step 983,040 (98.3%) | rew -13177.40 | ep_len  11323 | kl 0.0025
+Final model saved -> models/ppo_v6_final.zip

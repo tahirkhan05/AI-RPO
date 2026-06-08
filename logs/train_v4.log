@@ -1,0 +1,21 @@
+2026-06-06 19:23:45.570837: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-06 19:23:47.466462: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Device:         cpu
+Mode:           PINN-guided physics-consistent (v4)
+PINN model:     models/pinn_param_v1.pt
+Stage 1:        400,000 steps  (no randomization)
+Stage 2:        600,000 steps  (full randomization)
+LR:             0.0003 -> 1e-05 (linear decay)
+
+=== Stage 1: curriculum warmup (nominal config, PINN reference) ===
+  step 163,840 (16.4%) | rew -11607.41 | ep_len   8224 | kl 0.0019
+  step 327,680 (32.8%) | rew -12606.97 | ep_len   9307 | kl 0.0041
+Stage 1 saved -> models/ppo_v4_stage1.zip
+
+=== Stage 2: full domain randomization (per-episode PINN reference) ===
+  step 491,520 (49.2%) | rew -9958.68 | ep_len   9802 | kl 0.0035
+  step 655,360 (65.5%) | rew -7802.78 | ep_len  10324 | kl 0.0036
+  [checkpoint] saved: models\checkpoint_800000.zip
+  step 819,200 (81.9%) | rew -6461.16 | ep_len  10645 | kl 0.0026
+  step 983,040 (98.3%) | rew -5679.14 | ep_len  10837 | kl 0.0014
+Final model saved -> models/ppo_v4_final.zip

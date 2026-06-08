@@ -1,0 +1,22 @@
+2026-06-06 20:19:07.494805: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-06 20:19:09.400885: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Device:         cpu
+Mode:           PINN-guided + EKF state estimation (v5)
+PINN model:     models/pinn_param_v1.pt
+Sensors:        barometer (s=5m), GPS pos (s=3m), GPS vel (s=0.1m/s)
+Stage 1:        400,000 steps  (no randomization)
+Stage 2:        600,000 steps  (full randomization)
+LR:             0.0003 -> 1e-05 (linear decay)
+
+=== Stage 1: curriculum warmup (nominal, PINN + EKF) ===
+  step 163,840 (16.4%) | rew -11629.72 | ep_len   8128 | kl 0.0045
+  step 327,680 (32.8%) | rew -12459.42 | ep_len   9135 | kl 0.0030
+Stage 1 saved -> models/ppo_v5_stage1.zip
+
+=== Stage 2: full domain randomization (PINN + EKF) ===
+  step 491,520 (49.2%) | rew -10727.56 | ep_len   9533 | kl 0.0084
+  step 655,360 (65.5%) | rew -8794.22 | ep_len  10027 | kl 0.0032
+  [checkpoint] saved: models\checkpoint_800000.zip
+  step 819,200 (81.9%) | rew -7245.22 | ep_len  10400 | kl 0.0037
+  step 983,040 (98.3%) | rew -6219.04 | ep_len  10655 | kl 0.0023
+Final model saved -> models/ppo_v5_final.zip

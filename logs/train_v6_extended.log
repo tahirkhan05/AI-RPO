@@ -1,0 +1,35 @@
+2026-06-07 15:12:29.655812: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2026-06-07 15:12:31.325393: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Device:      cpu
+Mode:        3D PINN-guided + EKF (v6 extended)
+Network:     [512, 512]
+Stage 1:     1,000,000 steps
+Stage 2:     2,000,000 steps
+Total:       3,000,000 steps
+
+=== Stage 1: warm-start from v6, no randomization ===
+  Loading v6_final as warm start...
+  Note: rebuilding network at [512,512] — v6 weights incompatible (different arch)
+  step 163,840 ( 5.5%) | rew -6926.01 | ep_len  10075 | kl 0.0024
+  step 327,680 (10.9%) | rew -8602.57 | ep_len  10192 | kl 0.0032
+  step 491,520 (16.4%) | rew -6635.50 | ep_len   9175 | kl 0.0036
+  step 655,360 (21.8%) | rew -5488.71 | ep_len   8552 | kl 0.0038
+  step 819,200 (27.3%) | rew -5268.69 | ep_len   8465 | kl 0.0025
+  step 983,040 (32.8%) | rew -4736.68 | ep_len   8171 | kl 0.0045
+Stage 1 saved -> models/ppo_v6ext_stage1.zip
+
+=== Stage 2: full 3D domain randomization ===
+  step 1,179,648 (39.3%) | rew -3241.43 | ep_len   7262 | kl 0.0053
+  step 1,343,488 (44.8%) | rew -2985.15 | ep_len   7100 | kl 0.0045
+  step 1,507,328 (50.2%) | rew -3053.49 | ep_len   7360 | kl 0.0035
+  step 1,671,168 (55.7%) | rew -2072.92 | ep_len   6711 | kl 0.0041
+  step 1,835,008 (61.2%) | rew -2030.58 | ep_len   6838 | kl 0.0044
+  step 1,998,848 (66.6%) | rew -1940.32 | ep_len   6705 | kl 0.0040
+  step 2,162,688 (72.1%) | rew -1699.18 | ep_len   6385 | kl 0.0048
+  step 2,326,528 (77.6%) | rew -1647.56 | ep_len   6390 | kl 0.0036
+  step 2,490,368 (83.0%) | rew -1604.23 | ep_len   6349 | kl 0.0038
+  step 2,654,208 (88.5%) | rew -1526.18 | ep_len   6368 | kl 0.0038
+  step 2,818,048 (93.9%) | rew -1498.08 | ep_len   6320 | kl 0.0035
+  step 2,981,888 (99.4%) | rew -1474.12 | ep_len   6269 | kl 0.0035
+  [checkpoint] saved: models\checkpoint_3015808.zip
+Final model saved -> models/ppo_v6ext_final.zip
