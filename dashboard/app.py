@@ -229,10 +229,10 @@ if "data" in st.session_state:
 
     # ── Layout ────────────────────────────────────────────────────────────
     fig.update_layout(
-        height=700,
+        height=850,
         template="plotly_dark",
-        legend=dict(orientation="h", y=-0.08),
-        margin=dict(t=40, b=60),
+        legend=dict(orientation="h", y=-0.06),
+        margin=dict(t=50, b=80),
     )
 
     st.plotly_chart(fig, use_container_width=True)
